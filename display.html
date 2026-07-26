@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Majulah Hunt | Live Display</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="display-page">
+  <main class="page-shell">
+    <header class="hero">
+      <p class="eyebrow">NATIONAL DAY 2026</p>
+      <h1>Majulah Hunt</h1>
+      <p>Restore the National Pledge together</p>
+    </header>
+
+    <section class="panel status-panel">
+      <div>
+        <span class="small-label">Class</span>
+        <strong id="className">2A</strong>
+      </div>
+      <div>
+        <span class="small-label">Progress</span>
+        <strong><span id="completedCount">0</span> / <span id="requiredCount">3</span></strong>
+      </div>
+      <div>
+        <span class="small-label">Time remaining</span>
+        <strong id="timer">30:00</strong>
+      </div>
+    </section>
+
+    <div class="progress-track">
+      <div id="progressBar" class="progress-bar"></div>
+    </div>
+
+    <section class="panel pledge-panel">
+      <h2>The National Pledge</h2>
+      <div id="pledgeLines" class="pledge-lines"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Station progress</h2>
+      <div id="stationGrid" class="station-grid"></div>
+    </section>
+
+    <section id="completionBanner" class="completion-banner hidden">
+      Mission complete. Your class has restored the National Pledge.
+    </section>
+
+    <p id="connectionStatus" class="connection-status"></p>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="demo-data.js"></script>
+  <script src="display.js"></script>
+</body>
+</html>
