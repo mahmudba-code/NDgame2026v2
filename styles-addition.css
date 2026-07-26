@@ -1,66 +1,57 @@
 
 /* Add these rules to the bottom of styles.css */
 
-.class-progress-grid {
+.simple-class-grid {
   display: grid;
   grid-template-columns:
-    repeat(auto-fit, minmax(250px, 1fr));
+    repeat(auto-fit, minmax(230px, 1fr));
   gap: 16px;
 }
 
-.class-progress-card {
+.simple-class-card {
+  display: block;
+  padding: 20px;
   border: 2px solid var(--line);
-  background: #fafafa;
   border-radius: 16px;
-  padding: 18px;
+  background: #fafafa;
+  color: var(--ink);
+  text-decoration: none;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
-.class-progress-card.complete {
+.simple-class-card:hover {
+  border-color: var(--red);
+  transform: translateY(-2px);
+}
+
+.simple-class-card.complete {
   border-color: var(--green);
   background: #edf9f1;
 }
 
-.class-card-header {
+.simple-class-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 14px;
+  align-items: baseline;
+  gap: 16px;
 }
 
-.class-name {
-  font-size: 1.7rem;
+.simple-class-name {
+  font-size: 1.8rem;
 }
 
-.class-status {
-  font-size: 0.86rem;
-  font-weight: 700;
-  color: var(--muted);
-  text-align: right;
-}
-
-.class-progress-card.complete
-.class-status {
-  color: var(--green);
-}
-
-.class-score {
-  margin: 18px 0 10px;
-  font-size: 1.5rem;
-  font-weight: 800;
+.simple-class-score {
+  font-size: 1.3rem;
 }
 
 .progress-track.compact {
   height: 12px;
-  margin: 10px 0 14px;
+  margin: 16px 0 10px;
 }
 
-.class-metrics {
-  display: grid;
-  gap: 8px;
-  margin-bottom: 14px;
+.simple-class-footer {
   color: var(--muted);
-}
-
-.class-metrics strong {
-  color: var(--ink);
+  font-size: 0.95rem;
 }
