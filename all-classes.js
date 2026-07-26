@@ -43,7 +43,7 @@ function createClassRow(data) {
     data.challengeComplete
       ? `
         <div class="class-completed-bar">
-          Happy 61st National Day!!
+          Happy 61st National Day!
         </div>
       `
       : `
