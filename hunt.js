@@ -1,8 +1,23 @@
 function getSavedIdentity() {
   return {
-    className: localStorage.getItem("majulahClass") || DEFAULT_CLASS,
-    teamName: localStorage.getItem("majulahTeam") || "Red"
+    className:
+      localStorage.getItem("majulahClass") ||
+      DEFAULT_CLASS,
+
+    teamName:
+      localStorage.getItem("majulahTeam") ||
+      "Red"
   };
+}
+
+function updateLiveDisplayLink(className) {
+  const link =
+    document.getElementById("liveDisplayLink");
+
+  if (!link) return;
+
+  link.href =
+    `display.html?class=${encodeURIComponent(className)}`;
 }
 
 function initialiseIdentityFields() {
@@ -13,6 +28,8 @@ function initialiseIdentityFields() {
 
   document.getElementById("teamInput").value =
     identity.teamName;
+
+  updateLiveDisplayLink(identity.className);
 }
 
 function saveIdentity() {
@@ -31,6 +48,8 @@ function saveIdentity() {
     "majulahTeam",
     teamName
   );
+
+  updateLiveDisplayLink(className);
 
   loadDashboard();
 }
@@ -60,13 +79,17 @@ function renderDashboard(data) {
     "requiredCount"
   ).textContent = required;
 
+  const progressPercentage =
+    required > 0
+      ? Math.min(
+          100,
+          (achieved / required) * 100
+        )
+      : 0;
+
   document.getElementById(
     "progressBar"
-  ).style.width =
-    `${Math.min(
-      100,
-      (achieved / required) * 100
-    )}%`;
+  ).style.width = `${progressPercentage}%`;
 
   const clueGrid =
     document.getElementById("clueGrid");
@@ -142,8 +165,15 @@ async function loadDashboard() {
       `&t=${Date.now()}`;
 
     const response = await fetch(url, {
+      method: "GET",
       cache: "no-store"
     });
+
+    if (!response.ok) {
+      throw new Error(
+        `HTTP error ${response.status}`
+      );
+    }
 
     const data = await response.json();
 
@@ -157,11 +187,12 @@ async function loadDashboard() {
     renderDashboard(data);
 
     setConnectionStatus(
-      `Updated at ${
-        new Date().toLocaleTimeString()
-      }.`
+      `Class ${identity.className} updated at ` +
+      `${new Date().toLocaleTimeString()}.`
     );
   } catch (error) {
+    console.error(error);
+
     setConnectionStatus(
       `Connection problem: ${error.message}`
     );
