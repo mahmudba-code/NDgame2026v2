@@ -3,20 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Majulah Hunt | Student Dashboard</title>
+
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <main class="page-shell">
+
     <header class="hero compact">
       <p class="eyebrow">CLASS MISSION</p>
+
       <h1>Majulah Hunt</h1>
-      <p>Work with the other teams to complete the class challenge.</p>
+
+      <p>
+        Work with the other teams to complete the class challenge.
+      </p>
     </header>
 
     <section class="panel form-panel">
+
       <label>
         Class
+
         <select id="classInput">
           <option value="2-1">2-1</option>
           <option value="2-2">2-2</option>
@@ -31,6 +41,7 @@
 
       <label>
         Team
+
         <select id="teamInput">
           <option value="Red">Red</option>
           <option value="Blue">Blue</option>
@@ -38,34 +49,74 @@
         </select>
       </label>
 
-      <button id="saveIdentity" type="button">Save team details</button>
+      <button id="saveIdentity" type="button">
+        Save team details
+      </button>
+
     </section>
 
     <section class="panel">
+
       <div class="dashboard-heading">
+
         <div>
-          <span class="small-label">Shared class progress</span>
-          <strong><span id="completedCount">0</span> / <span id="requiredCount">3</span></strong>
+          <span class="small-label">
+            Shared class progress
+          </span>
+
+          <strong>
+            <span id="completedCount">0</span>
+            /
+            <span id="requiredCount">3</span>
+          </strong>
         </div>
-        <a class="button-link" href="display.html" target="_blank">Open live display</a>
+
+        <a
+          id="liveDisplayLink"
+          class="button-link"
+          href="display.html?class=2-1"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open live display
+        </a>
+
       </div>
 
       <div class="progress-track">
-        <div id="progressBar" class="progress-bar"></div>
+        <div
+          id="progressBar"
+          class="progress-bar"
+        ></div>
       </div>
+
     </section>
 
     <section class="panel">
+
       <h2>All clues</h2>
-      <p class="muted">Find the location first. The QR code at the location opens the station question.</p>
-      <div id="clueGrid" class="clue-grid"></div>
+
+      <p class="muted">
+        Find the location first. The QR code at the location
+        opens the station question.
+      </p>
+
+      <div
+        id="clueGrid"
+        class="clue-grid"
+      ></div>
+
     </section>
 
-    <p id="connectionStatus" class="connection-status"></p>
+    <p
+      id="connectionStatus"
+      class="connection-status"
+    ></p>
+
   </main>
 
-  <script src="config.js"></script>
-  <script src="demo-data.js"></script>
-  <script src="hunt.js"></script>
+  <script src="config.js?v=2"></script>
+  <script src="demo-data.js?v=2"></script>
+  <script src="hunt.js?v=2"></script>
 </body>
 </html>
