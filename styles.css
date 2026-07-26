@@ -241,6 +241,7 @@ textarea:focus {
 
 .form-row {
   display: grid;
+
   grid-template-columns:
     repeat(
       2,
@@ -267,11 +268,12 @@ textarea:focus {
 }
 
 /* =========================
-   STANDARD STATUS PANEL
+   STATUS PANEL
    ========================= */
 
 .status-panel {
   display: grid;
+
   grid-template-columns:
     repeat(
       3,
@@ -314,6 +316,7 @@ textarea:focus {
   height: 100%;
 
   border-radius: inherit;
+
   background:
     linear-gradient(
       90deg,
@@ -346,6 +349,7 @@ textarea:focus {
 
 .pledge-line {
   padding: 13px 16px;
+
   border-radius: 12px;
 
   font-size:
@@ -494,16 +498,14 @@ textarea:focus {
   text-align: center;
 }
 
-/* ======================================================
+/* =========================
    ALL-CLASS PROGRESS PAGE
-   These class names are unique so old dashboard CSS
-   will not interfere with this layout.
-   ====================================================== */
+   ========================= */
 
 .class-progress-page {
   width: min(
-    1400px,
-    calc(100% - 60px)
+    1200px,
+    calc(100% - 48px)
   );
 
   margin: 0 auto;
@@ -530,9 +532,9 @@ textarea:focus {
 
   font-size:
     clamp(
-      2.8rem,
+      2.6rem,
       5vw,
-      5rem
+      4.5rem
     );
 
   line-height: 1;
@@ -541,33 +543,27 @@ textarea:focus {
 .class-progress-list {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 20px;
 }
 
 .class-progress-row {
   display: grid;
 
   grid-template-columns:
-    210px minmax(0, 1fr);
+    80px minmax(0, 1fr);
 
   align-items: center;
-  gap: 28px;
+  gap: 18px;
 
   color: var(--ink);
   text-decoration: none;
 }
 
 .class-progress-number {
-  font-size:
-    clamp(
-      6rem,
-      10vw,
-      10rem
-    );
-
+  font-size: 42px;
   font-weight: 900;
-  line-height: 0.78;
-  letter-spacing: -0.07em;
+  line-height: 42px;
+  letter-spacing: -0.03em;
   text-align: right;
 }
 
@@ -577,6 +573,7 @@ textarea:focus {
   height: 42px;
 
   overflow: hidden;
+
   border-radius: 999px;
 }
 
@@ -612,9 +609,9 @@ textarea:focus {
 
   font-size:
     clamp(
-      1.15rem,
-      2.2vw,
-      1.8rem
+      1rem,
+      2vw,
+      1.45rem
     );
 
   font-weight: 900;
@@ -680,23 +677,19 @@ textarea:focus {
   }
 
   .class-progress-list {
-    gap: 18px;
+    gap: 16px;
   }
 
   .class-progress-row {
     grid-template-columns:
-      112px minmax(0, 1fr);
+      68px minmax(0, 1fr);
 
     gap: 12px;
   }
 
   .class-progress-number {
-    font-size:
-      clamp(
-        4rem,
-        18vw,
-        6rem
-      );
+    font-size: 36px;
+    line-height: 36px;
   }
 
   .class-progress-track,
@@ -706,20 +699,21 @@ textarea:focus {
 
   .class-completed-bar {
     padding: 0 8px;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
   }
 }
 
 @media (max-width: 420px) {
   .class-progress-row {
     grid-template-columns:
-      88px minmax(0, 1fr);
+      60px minmax(0, 1fr);
 
     gap: 10px;
   }
 
   .class-progress-number {
-    font-size: 3.5rem;
+    font-size: 32px;
+    line-height: 32px;
   }
 
   .class-progress-track,
@@ -729,5 +723,6 @@ textarea:focus {
 
   .class-completed-bar {
     font-size: 0.7rem;
+    padding: 0 6px;
   }
 }
