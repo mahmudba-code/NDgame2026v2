@@ -1,57 +1,65 @@
 
 /* Add these rules to the bottom of styles.css */
 
-.simple-class-grid {
+.progress-list {
   display: grid;
-  grid-template-columns:
-    repeat(auto-fit, minmax(230px, 1fr));
-  gap: 16px;
+  gap: 22px;
 }
 
-.simple-class-card {
-  display: block;
-  padding: 20px;
-  border: 2px solid var(--line);
-  border-radius: 16px;
-  background: #fafafa;
+.progress-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  align-items: center;
+  gap: 24px;
   color: var(--ink);
   text-decoration: none;
-  transition:
-    border-color 0.2s ease,
-    transform 0.2s ease;
 }
 
-.simple-class-card:hover {
-  border-color: var(--red);
-  transform: translateY(-2px);
+.progress-class {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1;
+  text-align: center;
 }
 
-.simple-class-card.complete {
-  border-color: var(--green);
-  background: #edf9f1;
+.progress-track.large {
+  height: 30px;
+  margin: 0;
+  border-radius: 999px;
+  overflow: hidden;
 }
 
-.simple-class-header {
+.progress-row:hover
+.progress-track.large {
+  outline: 3px solid var(--red);
+}
+
+.completed-message {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  border-radius: 999px;
+  background: var(--green);
+  color: white;
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  font-weight: 900;
+  text-align: center;
+  padding: 8px 24px;
 }
 
-.simple-class-name {
-  font-size: 1.8rem;
-}
+@media (max-width: 600px) {
+  .progress-row {
+    grid-template-columns: 80px 1fr;
+    gap: 14px;
+  }
 
-.simple-class-score {
-  font-size: 1.3rem;
-}
+  .progress-track.large {
+    height: 24px;
+  }
 
-.progress-track.compact {
-  height: 12px;
-  margin: 16px 0 10px;
-}
-
-.simple-class-footer {
-  color: var(--muted);
-  font-size: 0.95rem;
+  .completed-message {
+    min-height: 44px;
+    padding: 6px 14px;
+  }
 }

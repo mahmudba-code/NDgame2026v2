@@ -15,28 +15,28 @@ function setConnectionStatus(message) {
   ).textContent = message;
 }
 
-function createClassCard(data) {
-  const card =
+function createClassRow(data) {
+  const row =
     document.createElement("a");
 
-  card.className =
-    `simple-class-card ${
+  row.className =
+    `progress-row ${
       data.challengeComplete
         ? "complete"
         : ""
     }`;
 
-  card.href =
+  row.href =
     `display.html?class=${
       encodeURIComponent(
         data.className
       )
     }`;
 
-  card.target = "_blank";
-  card.rel = "noopener noreferrer";
+  row.target = "_blank";
+  row.rel = "noopener noreferrer";
 
-  const pointsPercentage =
+  const progressPercentage =
     data.targetPoints > 0
       ? Math.min(
           100,
@@ -47,35 +47,31 @@ function createClassCard(data) {
         )
       : 0;
 
-  card.innerHTML = `
-    <div class="simple-class-header">
-      <strong class="simple-class-name">
-        ${data.className}
-      </strong>
+  const progressContent =
+    data.challengeComplete
+      ? `
+        <div class="completed-message">
+          Happy 61st National Day!
+        </div>
+      `
+      : `
+        <div class="progress-track large">
+          <div
+            class="progress-bar"
+            style="width: ${progressPercentage}%"
+          ></div>
+        </div>
+      `;
 
-      <strong class="simple-class-score">
-        ${data.totalPoints}
-        /
-        ${data.targetPoints}
-      </strong>
+  row.innerHTML = `
+    <div class="progress-class">
+      ${data.className}
     </div>
 
-    <div class="progress-track compact">
-      <div
-        class="progress-bar"
-        style="width: ${pointsPercentage}%"
-      ></div>
-    </div>
-
-    <div class="simple-class-footer">
-      ${data.completedStations}
-      /
-      ${data.requiredStations}
-      stations
-    </div>
+    ${progressContent}
   `;
 
-  return card;
+  return row;
 }
 
 function renderDashboard(results) {
@@ -88,7 +84,7 @@ function renderDashboard(results) {
 
   results.forEach(data => {
     classGrid.appendChild(
-      createClassCard(data)
+      createClassRow(data)
     );
   });
 }
