@@ -17,18 +17,43 @@
     <section class="panel status-panel">
       <div>
         <span class="small-label">Class</span>
-        <strong id="className">2A</strong>
-      </div>
-      <div>
-        <span class="small-label">Progress</span>
-        <strong><span id="completedCount">0</span> / <span id="requiredCount">3</span></strong>
+        <strong id="className">2-1</strong>
       </div>
 
+      <div>
+        <span class="small-label">Stations completed</span>
+        <strong>
+          <span id="completedCount">0</span> /
+          <span id="requiredCount">15</span>
+        </strong>
+      </div>
+
+      <div>
+        <span class="small-label">Points</span>
+        <strong>
+          <span id="totalPoints">0</span> /
+          <span id="targetPoints">61</span>
+        </strong>
+      </div>
     </section>
 
     <div class="progress-track">
       <div id="progressBar" class="progress-bar"></div>
     </div>
+
+    <section class="panel">
+      <div class="score-breakdown">
+        <span>
+          Station points:
+          <strong id="stationPoints">0</strong>
+        </span>
+
+        <span>
+          Pledge point:
+          <strong id="pledgePoint">0</strong>
+        </span>
+      </div>
+    </section>
 
     <section class="panel pledge-panel">
       <h2>The National Pledge</h2>
@@ -41,14 +66,14 @@
     </section>
 
     <section id="completionBanner" class="completion-banner hidden">
-      Mission complete. Your class has restored the National Pledge.
+      Mission complete. Your class has earned 61 points.
     </section>
 
     <p id="connectionStatus" class="connection-status"></p>
   </main>
 
-  <script src="config.js"></script>
-  <script src="demo-data.js"></script>
-  <script src="display.js"></script>
+  <script src="config.js?v=5"></script>
+  <script src="demo-data.js?v=5"></script>
+  <script src="display.js?v=5"></script>
 </body>
 </html>
