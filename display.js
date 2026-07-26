@@ -1,5 +1,5 @@
 let demoStep = 0;
-let timerSeconds = 30 * 60;
+
 
 function setConnectionStatus(message) {
   document.getElementById("connectionStatus").textContent = message;
@@ -86,11 +86,7 @@ async function loadStatus() {
   }
 }
 
-function updateTimer() {
-  const minutes = String(Math.floor(timerSeconds / 60)).padStart(2, "0");
-  const seconds = String(timerSeconds % 60).padStart(2, "0");
-  document.getElementById("timer").textContent = `${minutes}:${seconds}`;
-  if (timerSeconds > 0) timerSeconds -= 1;
+
 }
 
 loadStatus();
