@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Majulah Hunt | All Classes
+  </title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <main class="page-shell">
+
+    <header class="hero">
+      <p class="eyebrow">
+        NATIONAL DAY 2026
+      </p>
+
+      <h1>
+        Majulah Hunt
+      </h1>
+
+      <p>
+        Live progress for all Sec 2 classes
+      </p>
+    </header>
+
+    <section class="panel">
+
+      <div class="dashboard-heading">
+        <div>
+          <span class="small-label">
+            Overall progress
+          </span>
+
+          <strong>
+            <span id="overallCompleted">0</span>
+            /
+            <span id="overallTarget">120</span>
+            stations
+          </strong>
+        </div>
+
+        <div>
+          <span class="small-label">
+            Classes completed
+          </span>
+
+          <strong>
+            <span id="classesCompleted">0</span>
+            /
+            <span id="classCount">8</span>
+          </strong>
+        </div>
+      </div>
+
+      <div class="progress-track">
+        <div
+          id="overallProgressBar"
+          class="progress-bar"
+        ></div>
+      </div>
+
+    </section>
+
+    <section class="panel">
+
+      <h2>
+        Class progress
+      </h2>
+
+      <div
+        id="classGrid"
+        class="class-progress-grid"
+      ></div>
+
+    </section>
+
+    <p
+      id="connectionStatus"
+      class="connection-status"
+    ></p>
+
+  </main>
+
+  <script src="config.js?v=7"></script>
+  <script src="all-classes.js?v=7"></script>
+</body>
+</html>

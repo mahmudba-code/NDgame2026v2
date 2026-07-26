@@ -1,0 +1,66 @@
+
+/* Add these rules to the bottom of styles.css */
+
+.class-progress-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.class-progress-card {
+  border: 2px solid var(--line);
+  background: #fafafa;
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.class-progress-card.complete {
+  border-color: var(--green);
+  background: #edf9f1;
+}
+
+.class-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.class-name {
+  font-size: 1.7rem;
+}
+
+.class-status {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-align: right;
+}
+
+.class-progress-card.complete
+.class-status {
+  color: var(--green);
+}
+
+.class-score {
+  margin: 18px 0 10px;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.progress-track.compact {
+  height: 12px;
+  margin: 10px 0 14px;
+}
+
+.class-metrics {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 14px;
+  color: var(--muted);
+}
+
+.class-metrics strong {
+  color: var(--ink);
+}
