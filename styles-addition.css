@@ -3,63 +3,71 @@
 
 .progress-list {
   display: grid;
-  gap: 22px;
+  gap: 28px;
 }
 
 .progress-row {
   display: grid;
-  grid-template-columns: 110px 1fr;
+  grid-template-columns: 180px 1fr;
   align-items: center;
-  gap: 24px;
+  gap: 28px;
   color: var(--ink);
   text-decoration: none;
 }
 
 .progress-class {
-  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-size: clamp(4rem, 8vw, 7rem);
   font-weight: 900;
-  line-height: 1;
+  line-height: 0.9;
   text-align: center;
+  letter-spacing: -0.04em;
 }
 
-.progress-track.large {
-  height: 30px;
+.progress-track.large,
+.completed-bar {
+  height: 34px;
   margin: 0;
   border-radius: 999px;
   overflow: hidden;
 }
 
-.progress-row:hover
-.progress-track.large {
-  outline: 3px solid var(--red);
-}
-
-.completed-message {
+.completed-bar {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 52px;
-  border-radius: 999px;
   background: var(--green);
   color: white;
-  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  font-size: clamp(1rem, 2vw, 1.45rem);
   font-weight: 900;
-  text-align: center;
-  padding: 8px 24px;
+  line-height: 1;
+  white-space: nowrap;
+  padding: 0 18px;
 }
 
-@media (max-width: 600px) {
+.progress-row:hover
+.progress-track.large,
+.progress-row:hover
+.completed-bar {
+  outline: 3px solid var(--red);
+}
+
+@media (max-width: 700px) {
   .progress-row {
-    grid-template-columns: 80px 1fr;
-    gap: 14px;
+    grid-template-columns: 110px 1fr;
+    gap: 16px;
   }
 
-  .progress-track.large {
-    height: 24px;
+  .progress-class {
+    font-size: clamp(3rem, 14vw, 5rem);
   }
 
-  .completed-message {
-    min-height: 44px;
-    padding: 6px 14px;
+  .progress-track.large,
+  .completed-bar {
+    height: 30px;
+  }
+
+  .completed-bar {
+    font-size: 0.9rem;
+    padding: 0 10px;
   }
 }

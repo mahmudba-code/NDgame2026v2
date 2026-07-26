@@ -50,7 +50,7 @@ function createClassRow(data) {
   const progressContent =
     data.challengeComplete
       ? `
-        <div class="completed-message">
+        <div class="completed-bar">
           Happy 61st National Day!
         </div>
       `
