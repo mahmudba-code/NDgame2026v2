@@ -1,318 +1,602 @@
-* { box-sizing: border-box; }
-
 :root {
   --red: #d71920;
-  --red-dark: #a90f15;
-  --green: #16733a;
-  --ink: #1c1c1e;
-  --muted: #686868;
-  --panel: #ffffff;
+  --dark-red: #a80f16;
+  --green: #198754;
+
+  --ink: #222222;
+  --muted: #6b7280;
+  --line: #d9dde3;
+
   --background: #f4f5f7;
-  --line: #dddddd;
+  --panel: #ffffff;
+  --soft-red: #fff0f1;
+  --soft-green: #edf9f1;
+
+  --shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================
+   BASE
+   ========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
 }
 
 body {
+  min-height: 100vh;
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      var(--background) 100%
+    );
+
   color: var(--ink);
-  background: var(--background);
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  line-height: 1.5;
 }
 
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* =========================
+   STANDARD PAGE LAYOUT
+   ========================= */
+
 .page-shell {
-  width: min(1100px, 92vw);
+  width: min(
+    1100px,
+    calc(100% - 32px)
+  );
+
   margin: 0 auto;
-  padding: 30px 0 50px;
+  padding: 32px 0 48px;
 }
 
 .page-shell.narrow {
-  width: min(620px, 92vw);
+  width: min(
+    700px,
+    calc(100% - 32px)
+  );
 }
+
+/* =========================
+   HEADER
+   ========================= */
 
 .hero {
+  margin-bottom: 28px;
+  padding: 36px 28px;
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--red),
+      var(--dark-red)
+    );
+
+  color: #ffffff;
   text-align: center;
-  margin-bottom: 24px;
+  box-shadow: var(--shadow);
 }
 
-.hero.compact h1 {
-  font-size: clamp(2.1rem, 7vw, 3.8rem);
+.hero.compact {
+  padding: 24px;
 }
 
 .hero h1 {
-  margin: 0;
-  font-size: clamp(2.8rem, 8vw, 5.4rem);
+  margin: 4px 0 8px;
+
+  font-size:
+    clamp(
+      2.4rem,
+      7vw,
+      5rem
+    );
+
+  line-height: 1;
 }
 
 .hero p {
-  margin: 10px 0 0;
-  font-size: 1.12rem;
+  margin: 0;
 }
 
 .eyebrow {
+  margin: 0;
+
+  font-size: 0.9rem;
   font-weight: 800;
-  letter-spacing: 0.17em;
-  font-size: 0.82rem !important;
+  letter-spacing: 0.16em;
 }
+
+/* =========================
+   PANELS
+   ========================= */
 
 .panel {
+  margin-bottom: 22px;
+  padding: 24px;
+
+  border: 1px solid var(--line);
+  border-radius: 20px;
+
   background: var(--panel);
-  border-radius: 18px;
-  padding: 22px;
-  margin-bottom: 18px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+  box-shadow: var(--shadow);
 }
 
-.status-panel,
-.dashboard-heading {
-  display: flex;
-  justify-content: space-between;
+.panel h2 {
+  margin-top: 0;
+}
+
+/* =========================
+   BUTTONS AND LINKS
+   ========================= */
+
+button,
+.button-link {
+  display: inline-flex;
   align-items: center;
-  gap: 18px;
-  flex-wrap: wrap;
-}
+  justify-content: center;
 
-.small-label {
-  display: block;
-  color: var(--muted);
-  font-size: 0.84rem;
-  margin-bottom: 5px;
-}
+  min-height: 48px;
+  padding: 12px 20px;
 
-.progress-track {
-  width: 100%;
-  height: 20px;
-  border-radius: 999px;
-  background: #e3e3e3;
-  overflow: hidden;
-  margin: 14px 0 20px;
-}
-
-.progress-bar {
-  height: 100%;
-  width: 0;
-  background: var(--red);
-  transition: width 0.45s ease;
-}
-
-.pledge-lines {
-  display: grid;
-  gap: 12px;
-}
-
-.pledge-line {
-  padding: 15px 17px;
+  border: 0;
   border-radius: 12px;
-  font-size: clamp(1.06rem, 2.6vw, 1.55rem);
-  line-height: 1.42;
-  transition: 0.35s ease;
-}
 
-.pledge-line.revealed {
-  background: #fff0f0;
-  font-weight: 700;
-}
+  background: var(--red);
+  color: #ffffff;
 
-.pledge-line.locked {
-  background: #eeeeee;
-  color: #8e8e8e;
-}
-
-.station-grid,
-.clue-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
-  gap: 14px;
-}
-
-.station-tile,
-.clue-card {
-  border: 2px solid var(--line);
-  background: #fafafa;
-  border-radius: 14px;
-  padding: 17px;
-}
-
-.station-tile.complete,
-.clue-card.complete {
-  border-color: var(--green);
-  background: #edf9f1;
-}
-
-.station-name,
-.clue-number {
   font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+
+  cursor: pointer;
 }
 
-.station-status,
-.muted {
-  color: var(--muted);
+button:hover,
+.button-link:hover {
+  background: var(--dark-red);
 }
 
-.clue-card h3 {
-  margin: 8px 0;
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
-.form-panel,
-.stacked-form {
-  display: grid;
-  gap: 14px;
+.text-link {
+  color: var(--red);
+  font-weight: 700;
+  text-decoration: none;
 }
 
-.form-panel {
-  grid-template-columns: 1fr 1fr auto;
-  align-items: end;
+.text-link:hover {
+  text-decoration: underline;
 }
+
+/* =========================
+   FORMS
+   ========================= */
 
 label {
-  display: grid;
-  gap: 6px;
+  display: block;
+  margin-bottom: 8px;
   font-weight: 700;
 }
 
 input,
 select,
-button {
+textarea {
   width: 100%;
-  padding: 12px 13px;
-  border-radius: 9px;
-  border: 1px solid #bcbcbc;
-  font-size: 1rem;
+  min-height: 48px;
+
+  padding: 11px 14px;
+
+  border: 1px solid var(--line);
+  border-radius: 12px;
+
+  background: #ffffff;
+  color: var(--ink);
 }
 
-button,
-.button-link {
-  border: none;
-  background: var(--red);
-  color: white;
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid
+    rgba(215, 25, 32, 0.2);
+
+  border-color: var(--red);
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 16px;
+}
+
+/* =========================
+   SMALL LABELS
+   ========================= */
+
+.small-label {
+  display: block;
+  margin-bottom: 4px;
+
+  color: var(--muted);
+
+  font-size: 0.85rem;
   font-weight: 800;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: center;
-  padding: 12px 16px;
-  border-radius: 9px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
-button:hover,
-.button-link:hover {
-  background: var(--red-dark);
+/* =========================
+   STANDARD STATUS PANEL
+   ========================= */
+
+.status-panel {
+  display: grid;
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  gap: 20px;
 }
+
+.status-panel strong {
+  display: block;
+
+  font-size:
+    clamp(
+      1.5rem,
+      4vw,
+      2.5rem
+    );
+
+  line-height: 1.1;
+}
+
+/* =========================
+   STANDARD PROGRESS BAR
+   ========================= */
+
+.progress-track {
+  width: 100%;
+  height: 20px;
+  margin: 16px 0 24px;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+  background: #e5e7eb;
+}
+
+.progress-bar {
+  width: 0;
+  height: 100%;
+
+  border-radius: inherit;
+  background:
+    linear-gradient(
+      90deg,
+      var(--red),
+      var(--dark-red)
+    );
+
+  transition: width 0.5s ease;
+}
+
+/* =========================
+   SCORE BREAKDOWN
+   ========================= */
+
+.score-breakdown {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* =========================
+   PLEDGE DISPLAY
+   ========================= */
+
+.pledge-lines {
+  display: grid;
+  gap: 10px;
+}
+
+.pledge-line {
+  padding: 13px 16px;
+  border-radius: 12px;
+
+  font-size:
+    clamp(
+      1rem,
+      2.5vw,
+      1.3rem
+    );
+
+  font-weight: 700;
+}
+
+.pledge-line.revealed {
+  border: 1px solid #b9dfc5;
+  background: var(--soft-green);
+}
+
+.pledge-line.locked {
+  border: 1px dashed var(--line);
+  background: #f4f5f7;
+  color: var(--muted);
+}
+
+/* =========================
+   STATION GRID
+   ========================= */
+
+.station-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(210px, 1fr)
+    );
+
+  gap: 14px;
+}
+
+.station-tile {
+  padding: 18px;
+
+  border: 2px solid var(--line);
+  border-radius: 16px;
+
+  background: #fafafa;
+}
+
+.station-tile.complete {
+  border-color: var(--green);
+  background: var(--soft-green);
+}
+
+.station-name {
+  font-weight: 800;
+}
+
+.station-status {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+/* =========================
+   STATION QUESTION PAGE
+   ========================= */
 
 .station-question {
-  font-size: 1.25rem;
-  line-height: 1.45;
+  font-size:
+    clamp(
+      1.25rem,
+      4vw,
+      2rem
+    );
+
+  font-weight: 800;
+}
+
+.station-clue {
+  padding: 16px;
+
+  border-left:
+    5px solid var(--red);
+
+  border-radius: 10px;
+  background: var(--soft-red);
 }
 
 .result-message {
-  margin: 17px 0;
-  padding: 14px;
-  border-radius: 10px;
+  margin: 18px 0;
+  padding: 16px;
+
+  border-radius: 12px;
+  font-weight: 800;
+}
+
+.result-message:empty {
   display: none;
 }
 
 .result-message.success {
-  display: block;
-  background: #e8f7ed;
-  color: #0f5f2d;
+  border: 1px solid #b9dfc5;
+  background: var(--soft-green);
+  color: #12652f;
 }
 
 .result-message.error {
-  display: block;
-  background: #fff0f0;
-  color: #9c151a;
+  border: 1px solid #efb4b8;
+  background: var(--soft-red);
+  color: #9b1118;
 }
+
+/* =========================
+   COMPLETION BANNER
+   ========================= */
 
 .completion-banner {
-  padding: 25px;
-  text-align: center;
-  background: var(--red);
-  color: white;
+  margin: 24px 0;
+  padding: 22px;
+
   border-radius: 18px;
+
+  background: var(--green);
+  color: #ffffff;
+
+  font-size:
+    clamp(
+      1.3rem,
+      4vw,
+      2.2rem
+    );
+
   font-weight: 900;
-  font-size: clamp(1.3rem, 4vw, 2rem);
+  text-align: center;
 }
 
-.hidden { display: none; }
+/* =========================
+   CONNECTION STATUS
+   ========================= */
 
 .connection-status {
-  text-align: center;
+  margin-top: 22px;
+
   color: var(--muted);
+
   font-size: 0.9rem;
+  text-align: center;
 }
 
-.text-link {
-  color: var(--red-dark);
-  font-weight: 700;
-}
-
-@media (max-width: 680px) {
-  .form-panel {
-    grid-template-columns: 1fr;
-  }
-}
-/* REPLACE the previous all-class dashboard CSS with this block. */
+/* ======================================================
+   ALL-CLASS PROGRESS PAGE
+   These class names are unique so old dashboard CSS
+   will not interfere with this layout.
+   ====================================================== */
 
 .class-progress-page {
-  width: min(1200px, calc(100% - 48px));
+  width: min(
+    1400px,
+    calc(100% - 60px)
+  );
+
   margin: 0 auto;
-  padding: 36px 0;
+  padding: 30px 0 44px;
 }
 
 .class-progress-heading {
-  margin-bottom: 34px;
+  margin-bottom: 30px;
   text-align: center;
 }
 
 .class-progress-heading p {
-  margin: 0 0 6px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
+  margin: 0 0 5px;
+
+  color: var(--red);
+
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
 }
 
 .class-progress-heading h1 {
   margin: 0;
-  font-size: clamp(2.4rem, 5vw, 4.5rem);
+
+  font-size:
+    clamp(
+      2.8rem,
+      5vw,
+      5rem
+    );
+
+  line-height: 1;
 }
 
 .class-progress-list {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 22px;
 }
 
 .class-progress-row {
   display: grid;
-  grid-template-columns: 190px minmax(0, 1fr);
+
+  grid-template-columns:
+    210px minmax(0, 1fr);
+
   align-items: center;
-  gap: 24px;
-  color: inherit;
+  gap: 28px;
+
+  color: var(--ink);
   text-decoration: none;
 }
 
 .class-progress-number {
-  font-size: clamp(5rem, 9vw, 8rem);
+  font-size:
+    clamp(
+      6rem,
+      10vw,
+      10rem
+    );
+
   font-weight: 900;
-  line-height: 0.82;
-  letter-spacing: -0.06em;
+  line-height: 0.78;
+  letter-spacing: -0.07em;
   text-align: right;
 }
 
 .class-progress-track,
 .class-completed-bar {
-  box-sizing: border-box;
   width: 100%;
   height: 42px;
-  border-radius: 999px;
+
   overflow: hidden;
+  border-radius: 999px;
 }
 
 .class-progress-track {
-  background: #e5e7eb;
+  background: #e2e4e8;
 }
 
 .class-progress-fill {
   width: 0;
   height: 100%;
+
   border-radius: inherit;
-  background: var(--red, #d71920);
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--red),
+      var(--dark-red)
+    );
+
   transition: width 0.5s ease;
 }
 
@@ -320,33 +604,99 @@ button:hover,
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--green, #198754);
+
+  padding: 0 18px;
+
+  background: var(--green);
   color: #ffffff;
-  font-size: clamp(1rem, 2.2vw, 1.55rem);
+
+  font-size:
+    clamp(
+      1.15rem,
+      2.2vw,
+      1.8rem
+    );
+
   font-weight: 900;
   line-height: 1;
+  text-align: center;
   white-space: nowrap;
-  padding: 0 18px;
+}
+
+.class-progress-row:hover
+.class-progress-track,
+.class-progress-row:hover
+.class-completed-bar {
+  outline:
+    3px solid
+    rgba(215, 25, 32, 0.35);
 }
 
 .class-progress-status {
-  margin-top: 28px;
+  margin-top: 26px;
+
+  color: var(--muted);
+
+  font-size: 0.85rem;
   text-align: center;
-  opacity: 0.7;
 }
 
-@media (max-width: 700px) {
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 760px) {
+  .page-shell,
+  .page-shell.narrow {
+    width: min(
+      100% - 20px,
+      1100px
+    );
+
+    padding-top: 14px;
+  }
+
+  .hero {
+    padding: 26px 18px;
+    border-radius: 18px;
+  }
+
+  .panel {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .status-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
   .class-progress-page {
-    width: min(100% - 24px, 1200px);
+    width: calc(100% - 18px);
+    padding-top: 20px;
+  }
+
+  .class-progress-list {
+    gap: 18px;
   }
 
   .class-progress-row {
-    grid-template-columns: 100px minmax(0, 1fr);
-    gap: 14px;
+    grid-template-columns:
+      112px minmax(0, 1fr);
+
+    gap: 12px;
   }
 
   .class-progress-number {
-    font-size: clamp(3.5rem, 18vw, 5rem);
+    font-size:
+      clamp(
+        4rem,
+        18vw,
+        6rem
+      );
   }
 
   .class-progress-track,
@@ -355,7 +705,29 @@ button:hover,
   }
 
   .class-completed-bar {
-    font-size: 0.82rem;
     padding: 0 8px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .class-progress-row {
+    grid-template-columns:
+      88px minmax(0, 1fr);
+
+    gap: 10px;
+  }
+
+  .class-progress-number {
+    font-size: 3.5rem;
+  }
+
+  .class-progress-track,
+  .class-completed-bar {
+    height: 32px;
+  }
+
+  .class-completed-bar {
+    font-size: 0.7rem;
   }
 }
