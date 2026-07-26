@@ -20,55 +20,47 @@ function createClassRow(data) {
     document.createElement("a");
 
   row.className =
-    `progress-row ${
-      data.challengeComplete
-        ? "complete"
-        : ""
-    }`;
+    "class-progress-row";
 
   row.href =
-    `display.html?class=${
-      encodeURIComponent(
-        data.className
-      )
-    }`;
+    `display.html?class=${encodeURIComponent(
+      data.className
+    )}`;
 
   row.target = "_blank";
   row.rel = "noopener noreferrer";
 
-  const progressPercentage =
+  const percentage =
     data.targetPoints > 0
       ? Math.min(
           100,
-          (
-            data.totalPoints /
-            data.targetPoints
-          ) * 100
+          (data.totalPoints /
+            data.targetPoints) * 100
         )
       : 0;
 
-  const progressContent =
+  const rightSide =
     data.challengeComplete
       ? `
-        <div class="completed-bar">
-          Happy 61st National Day!
+        <div class="class-completed-bar">
+          Happy 61st National Day!!
         </div>
       `
       : `
-        <div class="progress-track large">
+        <div class="class-progress-track">
           <div
-            class="progress-bar"
-            style="width: ${progressPercentage}%"
+            class="class-progress-fill"
+            style="width: ${percentage}%"
           ></div>
         </div>
       `;
 
   row.innerHTML = `
-    <div class="progress-class">
+    <div class="class-progress-number">
       ${data.className}
     </div>
 
-    ${progressContent}
+    ${rightSide}
   `;
 
   return row;
@@ -93,23 +85,25 @@ async function loadAllClasses() {
   try {
     if (DEMO_MODE) {
       throw new Error(
-        "Add the Apps Script URL in config.js before using this dashboard."
+        "Add the Apps Script URL in config.js."
       );
     }
 
-    const requests =
-      CLASSES.map(className => {
-        const url =
-          `${API_URL}?action=status` +
-          `&className=${encodeURIComponent(
-            className
-          )}` +
-          `&t=${Date.now()}`;
+    const results =
+      await Promise.all(
+        CLASSES.map(async className => {
+          const url =
+            `${API_URL}?action=status` +
+            `&className=${encodeURIComponent(
+              className
+            )}` +
+            `&t=${Date.now()}`;
 
-        return fetch(url, {
-          method: "GET",
-          cache: "no-store"
-        }).then(response => {
+          const response =
+            await fetch(url, {
+              cache: "no-store"
+            });
+
           if (!response.ok) {
             throw new Error(
               `HTTP error ${response.status}`
@@ -117,11 +111,8 @@ async function loadAllClasses() {
           }
 
           return response.json();
-        });
-      });
-
-    const results =
-      await Promise.all(requests);
+        })
+      );
 
     const invalid =
       results.find(data => !data.ok);
