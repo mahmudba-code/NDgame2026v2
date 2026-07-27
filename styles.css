@@ -544,7 +544,7 @@ textarea:focus {
 
 .class-progress-heading {
   display: flex;
-  align-items: stretch;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 24px;
 
@@ -584,12 +584,12 @@ textarea:focus {
   display: block;
 
   width: auto;
-  height: 100%;
-  max-height: 88px;
-  max-width: 180px;
+  height: auto;
+  max-height: 132px;
+  max-width: 270px;
 
   object-fit: contain;
-  object-position: right center;
+  object-position: right bottom;
 }
 
 .class-progress-list {
@@ -747,8 +747,8 @@ textarea:focus {
   }
 
   .class-progress-logo {
-    max-height: 68px;
-    max-width: 130px;
+    max-height: 102px;
+    max-width: 195px;
   }
 
   .class-progress-list {
@@ -784,8 +784,8 @@ textarea:focus {
   }
 
   .class-progress-logo {
-    max-height: 54px;
-    max-width: 95px;
+    max-height: 81px;
+    max-width: 143px;
   }
 
   .class-progress-row {
