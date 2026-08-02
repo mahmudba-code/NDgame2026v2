@@ -1334,3 +1334,36 @@ textarea:focus {
     font-size: 1.15rem;
   }
 }
+
+/* =========================
+   HUNT CLUE DISPLAY
+   ========================= */
+
+.clue-card {
+  padding: 18px 0;
+  border-bottom: 2px solid var(--line);
+}
+
+.clue-card:last-child {
+  border-bottom: none;
+}
+
+.clue-number {
+  margin-bottom: 6px;
+  font-size: 1.45rem;
+  font-weight: 900;
+  text-decoration: underline;
+}
+
+.clue-text {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.find-place {
+  color: var(--red);
+  font-size: 1rem;
+  font-weight: 900;
+}
+
