@@ -10,6 +10,7 @@ function getSavedIdentity() {
   };
 }
 
+
 function updateLiveDisplayLink(className) {
   const link =
     document.getElementById("liveDisplayLink");
@@ -19,6 +20,7 @@ function updateLiveDisplayLink(className) {
   link.href =
     `display.html?class=${encodeURIComponent(className)}`;
 }
+
 
 function initialiseIdentityFields() {
   const identity = getSavedIdentity();
@@ -31,6 +33,7 @@ function initialiseIdentityFields() {
 
   updateLiveDisplayLink(identity.className);
 }
+
 
 function saveIdentity() {
   const className =
@@ -54,11 +57,13 @@ function saveIdentity() {
   loadDashboard();
 }
 
+
 function setConnectionStatus(message) {
   document.getElementById(
     "connectionStatus"
   ).textContent = message;
 }
+
 
 function renderDashboard(data) {
   const completed =
@@ -110,28 +115,23 @@ function renderDashboard(data) {
         Clue ${station.stationId}
       </div>
 
-      <h3>
+      <div class="clue-text">
+        ${station.clue}
+      </div>
+
+      <div class="find-place">
         ${
           station.complete
             ? "Completed"
             : "Find this place"
         }
-      </h3>
-
-      <p>${station.clue}</p>
-
-      <span class="station-status">
-        ${
-          station.complete
-            ? "This station already counts for your class."
-            : "Scan the QR code at the location."
-        }
-      </span>
+      </div>
     `;
 
     clueGrid.appendChild(card);
   });
 }
+
 
 async function loadDashboard() {
   const identity = getSavedIdentity();
@@ -190,6 +190,7 @@ async function loadDashboard() {
       `Class ${identity.className} updated at ` +
       `${new Date().toLocaleTimeString()}.`
     );
+
   } catch (error) {
     console.error(error);
 
@@ -199,12 +200,14 @@ async function loadDashboard() {
   }
 }
 
+
 document
   .getElementById("saveIdentity")
   .addEventListener(
     "click",
     saveIdentity
   );
+
 
 initialiseIdentityFields();
 loadDashboard();
