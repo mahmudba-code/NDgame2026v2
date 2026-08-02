@@ -1167,3 +1167,170 @@ textarea:focus {
     min-height: 36px;
   }
 }
+/* ===================================
+   STUDENT SCOREBOARD
+   Add to the bottom of styles.css
+   =================================== */
+
+.student-score-page {
+  width: min(1200px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 28px 0 44px;
+}
+
+.student-score-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.student-score-heading p {
+  margin: 0 0 5px;
+  color: var(--red);
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+}
+
+.student-score-heading h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  line-height: 1;
+}
+
+.student-score-logo {
+  display: block;
+  width: auto;
+  max-width: 190px;
+  max-height: 125px;
+  object-fit: contain;
+  object-position: right bottom;
+}
+
+.student-score-table {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.student-score-header,
+.student-class-row {
+  display: grid;
+  grid-template-columns: 70px minmax(240px, 1fr) 120px;
+  align-items: center;
+  gap: 16px;
+}
+
+.student-score-header {
+  padding: 0 4px 12px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.student-class-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.student-class-row {
+  min-height: 52px;
+}
+
+.student-class-name {
+  font-size: 21px;
+  font-weight: 900;
+  text-align: right;
+}
+
+.student-progress-track,
+.student-completed-bar {
+  width: 100%;
+  height: 42px;
+  overflow: hidden;
+  border-radius: 999px;
+}
+
+.student-progress-track {
+  background: #e2e4e8;
+}
+
+.student-progress-fill {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--red), var(--dark-red));
+  transition: width 0.4s ease;
+}
+
+.student-completed-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  background: var(--green);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.student-total-points {
+  font-size: 1.6rem;
+  font-weight: 900;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .student-score-page {
+    width: calc(100% - 16px);
+    padding-top: 18px;
+  }
+
+  .student-score-logo {
+    max-width: 105px;
+    max-height: 85px;
+  }
+
+  .student-score-table {
+    padding: 12px;
+  }
+
+  .student-score-header {
+    display: none;
+  }
+
+  .student-class-list {
+    gap: 18px;
+  }
+
+  .student-class-row {
+    grid-template-columns: 44px minmax(0, 1fr) 60px;
+    gap: 8px;
+  }
+
+  .student-class-name {
+    font-size: 17px;
+  }
+
+  .student-progress-track,
+  .student-completed-bar {
+    height: 34px;
+  }
+
+  .student-completed-bar {
+    font-size: 0.72rem;
+    padding: 0 6px;
+  }
+
+  .student-total-points {
+    font-size: 1.15rem;
+  }
+}
