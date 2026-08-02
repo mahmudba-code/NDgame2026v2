@@ -4,9 +4,9 @@ function getSavedIdentity() {
       localStorage.getItem("majulahClass") ||
       DEFAULT_CLASS,
 
-    teamName:
-      localStorage.getItem("majulahTeam") ||
-      "Red"
+teamName:
+  localStorage.getItem("majulahTeam") ||
+  "Integrity and Care"
   };
 }
 
